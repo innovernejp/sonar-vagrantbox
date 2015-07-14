@@ -9,6 +9,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network "private_network", ip: "192.168.50.6"
 
   config.vm.provision "shell", path: "scripts/bootstrap.sh"
+  config.vm.synced_folder "src", "/var/www/src", :mount_options => ['dmode=777', 'fmode=777']
 
   config.vm.provision "puppet" do |puppet|
     puppet.manifests_path = "manifests"
