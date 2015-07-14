@@ -3,7 +3,7 @@ sonar-vagrantbox
 
 * CentOS 6.5 x64
 * PostgreSQL
-* Sonar 3.7.1
+* Sonar 5.1.1
 
 ## Usage
 
@@ -11,9 +11,22 @@ sonar-vagrantbox
 
 Sonar will be available at http://localhost:9000
 
-To run the maven goal:
+To run a php sonar analysis
 
-    mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 \
-    -Dsonar.jdbc.url=jdbc:postgresql://localhost/sonar \
-    -Dsonar.jdbc.username=sonar -Dsonar.jdbc.password=sonar \
-    -Dsonar.jdbc.driver=org.postgresql.Driver
+## Clone a repo into the shared src directory
+
+    cd src
+    git clone 'myrepo'
+
+## Set up the sonar project properties (copy the example, then change the project key / name)
+
+    cp src/sonar-project.properties.example myrepo/
+    
+## Run the project
+
+    vagrant ssh
+    cd /var/www/src/myrepo
+    /usr/local/sonar-runner/bin/sonar-runner
+
+    
+    
