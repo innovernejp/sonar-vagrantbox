@@ -30,3 +30,6 @@ class { 'sonarqube' :
   service      => 'sonar',
   jdbc         => $jdbc,
 }
+
+class {'sonarqube::runner' :
+}
